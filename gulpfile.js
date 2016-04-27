@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
+var sassGlob = require('gulp-sass-glob');
 
 // The following are included in Node.js's standard
 // library (npm isn't required to get them); but our
@@ -21,6 +22,7 @@ gulp.task('sass', function() {
  		// Initializes sourcemaps
  		.pipe(sourcemaps.init())
 	 	// Converts Sass into CSS with Gulp Sass
+	 	.pipe(sassGlob())
 	 	.pipe(sass())
 	 	// Logs compilation errors to console
 	 	.on('error', sass.logError)
