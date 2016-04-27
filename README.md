@@ -21,7 +21,7 @@ Run these commands wherever you cloned the repo to get the following packages:
 
 ```bash
 npm init
-npm install --save-dev gulp gulp-sass gulp-autoprefixer gulp-sourcemaps glob es6-promise
+npm install --save-dev gulp gulp-sass gulp-autoprefixer gulp-sourcemaps glob gulp-sass-glob es6-promise
 bower init
 bower install breakpoint-sass sass-toolkit susy compass-mixins --save
 ```
