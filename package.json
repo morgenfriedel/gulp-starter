@@ -1,7 +1,7 @@
 {
   "name": "gulp-starterkit",
   "version": "1.0.0",
-  "description": "This is a starting point to get gulp to do basic SASS compilation.",
+  "description": "This is a starting point to set up gulp for basic SASS compilation and watch tasks.",
   "main": "style.css",
   "dependencies": {
     "glob": "~7.0.3",
