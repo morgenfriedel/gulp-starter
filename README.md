@@ -23,7 +23,7 @@ Run these commands wherever you cloned the repo to get the following packages:
 npm init
 npm install --save-dev gulp gulp-sass gulp-autoprefixer gulp-sourcemaps glob gulp-sass-glob es6-promise
 bower init
-bower install breakpoint-sass sass-toolkit susy compass-mixins --save
+bower install reset-css breakpoint-sass sass-toolkit susy compass-mixins --save
 ```
 
 Now if you run `gulp` in the repo directory, it should both compile the sass and watch for any chances in the `/scss` folder.
