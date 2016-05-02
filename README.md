@@ -26,10 +26,6 @@ bower install reset-css breakpoint-sass sass-toolkit susy compass-mixins --save
 
 Now if you run `gulp` in the repo directory, it should both compile the sass and watch for any chances in the `/scss` folder.
 
-<<<<<<< HEAD
 ## Common Issues
 
 If you're running Vagrant on Windows, you may encounter errors such as `Error: EPERM, open '/srv/www/very/long/dir/path'` or `npm ERR! UNKNOWN, symlink` when trying to use the above gulp setup. This can be solved by running `npm install --no-bin-links`, which configures `npm install` so that it doesn't create any symlinks when the command is run. (https://harvsworld.com/2015/how-to-fix-npm-install-errors-on-vagrant-on-windows-because-the-paths-are-too-long/ "Source").
-=======
-Happy gulping!
->>>>>>> ffe5baae69c0f51c32de2474763bb3f9dc707ecc
