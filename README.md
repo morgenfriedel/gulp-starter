@@ -24,7 +24,7 @@ bower init
 bower install reset-css breakpoint-sass sass-toolkit susy compass-mixins --save
 ```
 
-Now if you run `gulp` in the repo directory, it should both compile the sass and watch for any changes in the `/scss` folder.
+Make sure you open `gulpfile.js` and configure all of the necessary parameters specific to your project. Once completed, if you run `gulp` in the repo directory, it should compile your SCSS files, watch for any changes, and reload your browsers automatically.
 
 ## Common Issues
 
