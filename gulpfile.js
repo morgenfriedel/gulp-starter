@@ -25,8 +25,8 @@ gulp.task('serve', ['sass'], function() {
         browser: ["google-chrome","firefox"]
     });
 
-  // Watches the scss folder for all .scss and
-  // .html files and updates browser automatically
+	// Watches the scss folder for all .scss and
+	// .html files and updates browser automatically
 
     gulp.watch('./scss/**/*.{scss,sass}', ['sass']);
     gulp.watch("./*.html").on('change', browserSync.reload);
