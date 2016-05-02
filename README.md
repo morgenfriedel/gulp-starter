@@ -19,12 +19,12 @@ Run these commands wherever you cloned the repo to get the following packages:
 
 ```bash
 npm init
-npm i --save-dev gulp gulp-sass gulp-autoprefixer gulp-sourcemaps glob gulp-sass-glob es6-promise
+npm i --save-dev gulp gulp-sass gulp-autoprefixer gulp-sourcemaps glob gulp-sass-glob es6-promise browser-sync
 bower init
 bower install reset-css breakpoint-sass sass-toolkit susy compass-mixins --save
 ```
 
-Now if you run `gulp` in the repo directory, it should both compile the sass and watch for any chances in the `/scss` folder.
+Now if you run `gulp` in the repo directory, it should both compile the sass and watch for any changes in the `/scss` folder.
 
 ## Common Issues
 

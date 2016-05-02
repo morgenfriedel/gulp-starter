@@ -1,16 +1,37 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
-var sassGlob = require('gulp-sass-glob');
+var gulp = require('gulp'),
+	sass = require('gulp-sass'),
+	autoprefixer = require('gulp-autoprefixer'),
+	sourcemaps = require('gulp-sourcemaps'),
+	sassGlob = require('gulp-sass-glob'),
+	browserSync = require('browser-sync').create();
 
 // The following are included in Node.js's standard
 // library (npm isn't required to get them); but our
 // .scss files and this gulpfile will use them.
 
-var fs = require('fs');
-var path = require('path');
-var glob = require('glob');
+var fs = require('fs'),
+	path = require('path'),
+	glob = require('glob');
+
+// Configures watch task with Browsersync
+
+gulp.task('serve', ['sass'], function() {
+
+    browserSync.init({
+        open: 'external',
+		host: 'project.dev',
+		proxy: 'project.dev',
+		port: 3000,
+        browser: ["google-chrome","firefox"]
+    });
+
+  // Watches the scss folder for all .scss and
+  // .html files and updates browser automatically
+
+    gulp.watch('./scss/**/*.{scss,sass}', ['sass']);
+    gulp.watch("./*.html").on('change', browserSync.reload);
+
+});
 
 gulp.task('sass', function() {
 
@@ -34,14 +55,5 @@ gulp.task('sass', function() {
 
 });
 
-gulp.task('watch', function() {
-
-  // Watches the scss folder for all .scss and .sass files
-  // If any file changes, run the sass task
-
-  gulp.watch('./scss/**/*.{scss,sass}', ['sass'])
-
-});
-
 // Creating a default task
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['sass', 'serve']);
