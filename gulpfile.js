@@ -17,7 +17,7 @@ var fs = require('fs'),
 
 // Configures watch task with Browsersync
 
-gulp.task('serve', ['sass'], ['js'] function() {
+gulp.task('serve', ['sass', 'js'], function() {
 
     browserSync.init({
         open: 'external',
@@ -30,7 +30,8 @@ gulp.task('serve', ['sass'], ['js'] function() {
 	// Watches the scss folder for all .scss and
 	// .html files and updates browser automatically
 
-    gulp.watch('./scss/**/*.{scss,sass}', ['sass']);
+    gulp.watch('./scss/**/*.{scss,sass}', ['sass']).on('change', browserSync.reload);
+    gulp.watch('./js/**/*.js', ['js']).on('change', browserSync.reload);
     gulp.watch("./*.html").on('change', browserSync.reload);
 
 });
@@ -56,19 +57,19 @@ gulp.task('sass', function() {
 gulp.task('js', function() {
 
 	// Concat and wrap the document.ready() scripts
-	gulp.src('./js/docready/*.js')
+	gulp.src('./js/docready/docready.*.js')
 		.pipe(concat('docready.js'))
 		.pipe(docready())
-		.pipe(gulp.dest('./js'));
+		.pipe(gulp.dest('./js/gulped'));
 
 	// Concat and wrap the window.resize() scripts
-	gulp.src('./js/resize/*.js')
+	gulp.src('./js/resize/resize.*.js')
 		.pipe(concat('resize.js'))
 		.pipe(resize())
-		.pipe(gulp.dest('./js'));
+		.pipe(gulp.dest('./js/gulped'));
 
 	// Concats resulting scripts in the js directory
-	gulp.src('./js/*.js')
+	gulp.src('./js/gulped/*.js')
 		.pipe(concat('script.js'))
 		.pipe(gulp.dest('./js'));
 
