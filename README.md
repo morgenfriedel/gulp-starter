@@ -19,7 +19,7 @@ Run these commands wherever you cloned the repo to get the following packages:
 
 ```bash
 npm init
-npm i --save-dev gulp glob es6-promise gulp-sass gulp-sass-glob gulp-autoprefixer browser-sync
+npm i --save-dev gulp glob es6-promise gulp-sass gulp-sass-glob gulp-autoprefixer gulp-concat browser-sync
 bower init
 bower install reset-css breakpoint-sass sass-toolkit susy compass-mixins --save
 ```
