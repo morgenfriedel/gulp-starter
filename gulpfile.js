@@ -1,12 +1,14 @@
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
-	sourcemaps = require('gulp-sourcemaps'),
 	sassGlob = require('gulp-sass-glob'),
+	concat	= require('gulp-concat'),
+	docready = require('./js/docready/wrapper'),
+	resize = require('./js/resize/wrapper'),
 	browserSync = require('browser-sync').create();
 
 // The following are included in Node.js's standard
-// library (npm isn't required to get them); but our
+// library (with the exception of glob); but our
 // .scss files and this gulpfile will use them.
 
 var fs = require('fs'),
@@ -15,7 +17,7 @@ var fs = require('fs'),
 
 // Configures watch task with Browsersync
 
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', ['sass'], ['js'] function() {
 
     browserSync.init({
         open: 'external',
@@ -40,8 +42,6 @@ gulp.task('sass', function() {
 // ending with .scss or .sass within the scss folder. 
 
  	gulp.src('./scss/**/*.{scss,sass}')
- 		// Initializes sourcemaps
- 		.pipe(sourcemaps.init())
 	 	// Converts Sass into CSS with Gulp Sass
 	 	.pipe(sassGlob())
 	 	.pipe(sass())
@@ -49,11 +49,30 @@ gulp.task('sass', function() {
 	 	.on('error', sass.logError)
 		// Runs autoprefixer on CSS where necessary
 		.pipe(autoprefixer())
-		// Writes sourcemaps into the CSS file
-		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('css'))
 
 });
 
+gulp.task('js', function() {
+
+	// Concat and wrap the document.ready() scripts
+	gulp.src('./js/docready/*.js')
+		.pipe(concat('docready.js'))
+		.pipe(docready())
+		.pipe(gulp.dest('./js'));
+
+	// Concat and wrap the window.resize() scripts
+	gulp.src('./js/resize/*.js')
+		.pipe(concat('resize.js'))
+		.pipe(resize())
+		.pipe(gulp.dest('./js'));
+
+	// Concats resulting scripts in the js directory
+	gulp.src('./js/*.js')
+		.pipe(concat('script.js'))
+		.pipe(gulp.dest('./js'));
+
+});
+
 // Creating a default task
-gulp.task('default', ['sass', 'serve']);
+gulp.task('default', ['sass', 'js', 'serve']);

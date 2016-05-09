@@ -1,6 +1,6 @@
 # gulp-starterkit
 
-This is a starting point to set up gulp for basic SASS compilation and watch tasks.
+This is a starting point to set up gulp for SCSS and JS compilation and watch tasks. It comes with jQuery 2.2.3 as an example of modularizing your JS files as well as BrowserSync support in an effort to create a more efficient development process.
 
 ## Installation
 
@@ -19,7 +19,7 @@ Run these commands wherever you cloned the repo to get the following packages:
 
 ```bash
 npm init
-npm i --save-dev gulp gulp-sass gulp-autoprefixer gulp-sourcemaps glob gulp-sass-glob es6-promise browser-sync
+npm i --save-dev gulp glob es6-promise gulp-sass gulp-sass-glob gulp-autoprefixer browser-sync
 bower init
 bower install reset-css breakpoint-sass sass-toolkit susy compass-mixins --save
 ```
@@ -28,6 +28,6 @@ Make sure you open `gulpfile.js` and configure all of the necessary parameters s
 
 ## Common Issues
 
-If you're running Vagrant on Windows, you may encounter errors such as `Error: EPERM, open '/srv/www/very/long/dir/path'` or `npm ERR! UNKNOWN, symlink` when trying to use the above gulp setup.
+If you're running Vagrant, Laravel Homestead, PuPHPet, etc. you may encounter errors such as `Error: EPERM, open '/srv/www/very/long/dir/path'` or `npm ERR! UNKNOWN, symlink` when trying to use the above gulp setup. This may perhaps be due to the variance of filesystem directory structures that haven't been accounted for by every npm module.
 
-This can be solved by running `npm install --no-bin-links`, which configures `npm install` so that it doesn't create any symlinks when the command is run. [Source](https://harvsworld.com/2015/how-to-fix-npm-install-errors-on-vagrant-on-windows-because-the-paths-are-too-long/).
+This can be solved by running `npm install --no-bin-links`, which tells `npm install` to not create any symlinks when the command is run. [Source](https://harvsworld.com/2015/how-to-fix-npm-install-errors-on-vagrant-on-windows-because-the-paths-are-too-long/).
