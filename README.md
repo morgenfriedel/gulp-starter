@@ -25,9 +25,3 @@ bower install reset-css breakpoint-sass sass-toolkit susy compass-mixins --save
 ```
 
 Make sure you open `gulpfile.js` and configure all of the necessary parameters specific to your project. Once completed, if you run `gulp` in the repo directory, it should compile your SCSS files, concat your JS, watch for any changes, and reload your browsers automatically.
-
-## Common Issues
-
-If you're running Vagrant, Laravel Homestead, PuPHPet, etc. you may encounter errors such as `Error: EPERM, open '/srv/www/very/long/dir/path'` or `npm ERR! UNKNOWN, symlink` when trying to use the above gulp setup. This may perhaps be due to the variance of filesystem directory structures that haven't been accounted for by every npm module.
-
-This can be solved by running `npm install --no-bin-links`, which tells `npm install` to not create any symlinks when the command is run. [Source](https://harvsworld.com/2015/how-to-fix-npm-install-errors-on-vagrant-on-windows-because-the-paths-are-too-long/).
